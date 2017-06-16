@@ -11,6 +11,7 @@ import { TravelComponent } from './travel/travel.component';
 import { LifestyleComponent } from './lifestyle/lifestyle.component';
 import { ProtectionComponent } from './protection/protection.component';
 import { BenefitListComponent } from './benefit-list/benefit-list.component';
+import { BenefitDetailComponent } from './benefit-detail/benefit-detail.component';
 
 @NgModule({
   declarations: [
@@ -19,7 +20,8 @@ import { BenefitListComponent } from './benefit-list/benefit-list.component';
     TravelComponent,
     LifestyleComponent,
     ProtectionComponent,
-    BenefitListComponent
+    BenefitListComponent,
+    BenefitDetailComponent
   ],
   imports: [
 		RouterModule.forRoot(appRoutes),

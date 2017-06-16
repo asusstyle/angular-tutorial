@@ -4,7 +4,7 @@ import { AppComponent } from "./app.component";
 import { TravelComponent } from "./travel/travel.component";
 import { LifestyleComponent } from "./lifestyle/lifestyle.component";
 import { ProtectionComponent } from "./protection/protection.component";
-
+import { BenefitDetailComponent } from "./benefit-detail/benefit-detail.component";
 
 export const appRoutes: Routes = [
 	{
@@ -26,5 +26,10 @@ export const appRoutes: Routes = [
 		path: 'protection',
 		component: ProtectionComponent,
 		data: { stateName: 'protection', index: 2 }
+	},
+	{
+		path: 'benefit/:section/:id',
+		component: BenefitDetailComponent,
+		data: { stateName: 'benefit-details', index: 3 }
 	}
 ];

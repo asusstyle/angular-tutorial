@@ -1,5 +1,5 @@
 import { Component, OnInit } from '@angular/core';
-import { Router, ActivatedRoute } from '@angular/router';
+import { Router } from '@angular/router';
 
 import { TravelComponent } from "../travel/travel.component";
 import { LifestyleComponent } from "../lifestyle/lifestyle.component";
@@ -16,7 +16,7 @@ export class BenefitListComponent implements OnInit {
 	public benefits = new Array();
 	public title;
 
-  constructor(private lifeStyleComponent: LifestyleComponent, private travelComponent: TravelComponent, private protectionComponent: ProtectionComponent, private router: Router, private activatedRoute: ActivatedRoute) {	}
+  constructor(private lifeStyleComponent: LifestyleComponent, private travelComponent: TravelComponent, private protectionComponent: ProtectionComponent, private router: Router) {	}
 
   ngOnInit() {
 		this.getbenefits();
@@ -26,52 +26,45 @@ export class BenefitListComponent implements OnInit {
 		let state = this.router.url.replace("/", "");
 
 		if(state === "travel") {
-			this.benefits.length = 0;
 			this.title = "Travel";
 
 			this.travelComponent.getTravelBenefits().subscribe(
 				res => {
 
-					for(let i = 0; i < res.length; i++) {
-						if(res[i].SiteSection === "Travel" && res[i].ItemType !== "" && res[i].ParentOffer === "Home") {
-							this.benefits.push(res[i]);
-						}
-					}
-					console.log(this.benefits);
+					res.map(x => {
+						if(x.SiteSection === "Travel" && x.ItemType !== "" && x.ParentOffer === "Home")
+							this.benefits.push(x);
+					});
 				}
 			);
 		}
 
 		if(state === "lifestyle") {
-			this.benefits.length = 0;
 			this.title = "Lifestyle";
 
 			this.lifeStyleComponent.getLifeStyleBenefits().subscribe(
 				res => {
 
-					for(let i = 0; i < res.length; i++) {
-						if(res[i].SiteSection === "Lifestyle" && res[i].ItemType !== "" && res[i].ParentOffer === "Home") {
-							this.benefits.push(res[i]);
-						}
-					}
-					console.log(this.benefits);
+					res.map(x => {
+						if(x.SiteSection === "Lifestyle" && x.ItemType !== "" && x.ParentOffer === "Home")
+							this.benefits.push(x);
+					});
+
 				}
 			);
 		}
 
 		if(state === "protection") {
-			this.benefits.length = 0;
 			this.title = "Protection";
 
 			this.protectionComponent.getProtectionBenefits().subscribe(
 				res => {
 
-					for(let i = 0; i < res.length; i++) {
-						if(res[i].SiteSection === "Protection" && res[i].ItemType !== "" && res[i].ParentOffer === "Home") {
-							this.benefits.push(res[i]);
-						}
-					}
-					console.log(this.benefits);
+					res.map(x => {
+						if(x.SiteSection === "Protection" && x.ItemType !== "" && x.ParentOffer === "Home")
+							this.benefits.push(x);
+					});
+
 				}
 			);
 		}
