@@ -1,5 +1,5 @@
 import { Component, OnInit } from '@angular/core';
-import { CanActivate, Router, ActivatedRoute, RouterStateSnapshot, CanActivateChild } from '@angular/router';
+import { Router } from '@angular/router';
 
 import { ApiServicesService } from '../services/api-services.service';
 

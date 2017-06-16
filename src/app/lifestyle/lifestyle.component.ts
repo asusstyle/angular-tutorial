@@ -11,8 +11,6 @@ import { ApiServicesService } from '../services/api-services.service';
 })
 export class LifestyleComponent implements OnInit {
 
-	// public benefits = new Array();
-
   constructor(private apiServices: ApiServicesService) { }
 
   ngOnInit() { }
@@ -20,7 +18,6 @@ export class LifestyleComponent implements OnInit {
 	getLifeStyleBenefits(): Observable<any> {
 		return this.apiServices.getBenefits().map(
 			res => {
-				console.log(res);
 				return res;
 			}
 		);
