@@ -15,16 +15,16 @@ export const appRoutes: Routes = [
 	{
 		path: 'travel',
 		component: TravelComponent,
-		data: { title: 'Travel Benefits', index: 0 }
+		data: { stateName: 'travel', index: 0 }
 	},
 	{
 		path: 'lifestyle',
 		component: LifestyleComponent,
-		data: { title: 'Lifestyle Benefits', index: 1 }
+		data: { stateName: 'lifestyle', index: 1 }
 	},
 	{
 		path: 'protection',
 		component: ProtectionComponent,
-		data: { title: 'Protection Benefits', index: 2 }
+		data: { stateName: 'protection', index: 2 }
 	}
 ];

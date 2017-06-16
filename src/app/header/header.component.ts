@@ -1,5 +1,5 @@
 import { Component, OnInit } from '@angular/core';
-import { Router } from '@angular/router';
+import { Router, ActivatedRoute } from '@angular/router';
 
 import { ApiServicesService } from '../services/api-services.service';
 
@@ -14,7 +14,7 @@ export class HeaderComponent implements OnInit {
 	public sections = new Array();
 	public param = "Travel";
 
-  constructor(private apiServices: ApiServicesService, private router: Router) { }
+  constructor(private apiServices: ApiServicesService, private router: Router, private activatedRoute: ActivatedRoute) { }
 
   ngOnInit() {
 		this.getNavs();
