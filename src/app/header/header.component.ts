@@ -1,5 +1,5 @@
 import { Component, OnInit } from '@angular/core';
-import { Router, ActivatedRoute } from '@angular/router';
+import { ActivatedRoute } from '@angular/router';
 
 import { ApiServicesService } from '../services/api-services.service';
 
@@ -12,50 +12,43 @@ import { ApiServicesService } from '../services/api-services.service';
 export class HeaderComponent implements OnInit {
 
 	public sections = new Array();
-	public param = "Travel";
+	private language = "en";
 
-  constructor(private apiServices: ApiServicesService, private router: Router, private activatedRoute: ActivatedRoute) { }
+  constructor(private apiServices: ApiServicesService, private route: ActivatedRoute) { }
 
   ngOnInit() {
-		this.getNavs();
+		// this.getNavs();
+		this.getNavJson();
 
-		// if(!!location.pathname) {
-		// 	let charAtOne, path;
-		//
-		// 	path = location.pathname.replace("/", "");
-		// 	charAtOne = path.charAt(0);
-		//
-		// 	this.param = charAtOne.toUpperCase() + path.replace(charAtOne, "");
-		// }
+		this.route.queryParams.subscribe(params => {
+			this.language = String(params['lang']);
+		});
   }
 
-	getNavs() {
-		this.apiServices.getBenefits().subscribe(
+	getNavJson() {
+		this.apiServices.getNav().subscribe(
 			res => {
-
-				for(let i = 0; i < res.length; i++) {
-					if(this.sections.indexOf(res[i].SiteSection) === -1) {
-						this.sections.push(res[i].SiteSection);
-					}
+				if(this.language === "ar") {
+					this.sections = res["top-navigation"]["ar"];
+				} else {
+					this.sections = res["top-navigation"]["en"];
 				}
-
 			}
 		);
 	}
 
-	// navigateTo(event) {
-	// 	let targetEl = event.target,
-	// 			parentUl = targetEl.parentNode.parentNode,
-	// 			alink = targetEl.getAttribute("target");
-	//
-	// 	parentUl.querySelectorAll("li").forEach(function(el) {
-	// 	  el.classList.remove("active");
-	// 	});
-	//
-	// 	this.router.navigate(["/"+ alink]);
-	// 	targetEl.parentNode.classList.add("active");
-	//
-	// 	return false;
-	// }
+	getNavs() {
+		this.apiServices.getBenefits().subscribe(
+
+			res => {
+				res.map(x => {
+					if(this.sections.indexOf(x.SiteSection) === -1) {
+						this.sections.push(x.SiteSection);
+					}
+				});
+			}
+
+		);
+	}
 
 }

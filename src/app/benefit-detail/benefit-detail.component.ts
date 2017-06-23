@@ -21,7 +21,7 @@ export class BenefitDetailComponent implements OnInit {
   ngOnInit() {
 		this.route.params.subscribe(params => {
 			this.id = Number(params['id']);
-			this.section = params['section'];
+			this.section = String(params['section']);
 		});
 
 		this.getBenefitDetails();

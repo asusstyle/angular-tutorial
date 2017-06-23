@@ -1,11 +1,11 @@
-<div class="container">
+<div class="container" *ngIf="benefits">
 	<h1>{{title}}</h1>
 	<ul class="row benefit-list">
-		<li class="col-sm-6 col-md-4" *ngFor="let ben of benefits">
+		<li class="col-sm-6 col-md-4" *ngFor="let ben of benefits | orderById">
 			<h2>{{ben.OfferHead}}</h2>
 			<p class="offer-desc" [innerHTML]="ben.OfferBriefDescription"></p>
-			<a [routerLink]="['/benefit', ben.SiteSection | lowercase, ben.ID]" class="ctc-more">{{ben.LinkText}}</a>
-			<!-- <a routerLink="/benefit/{{ben.SiteSection | lowercase}}/{{ben.ID}}" class="ctc-more">{{ben.LinkText}}</a> -->
+			<a [routerLink]="['/', ben.SiteSection | lowercase, 'benefit', ben.ID]" class="ctc-more">{{ben.LinkText}}</a>
+			<!-- <a routerLink="/{{ben.SiteSection | lowercase}}/benefit/{{ben.ID}}" class="ctc-more">{{ben.LinkText}}</a> -->
 		</li>
 	</ul>
 </div>

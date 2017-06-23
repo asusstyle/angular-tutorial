@@ -12,6 +12,10 @@ import { LifestyleComponent } from './lifestyle/lifestyle.component';
 import { ProtectionComponent } from './protection/protection.component';
 import { BenefitListComponent } from './benefit-list/benefit-list.component';
 import { BenefitDetailComponent } from './benefit-detail/benefit-detail.component';
+import { OrderByIdPipe } from './pipes/order-by-id.pipe';
+import { PageNotFoundComponent } from './page-not-found/page-not-found.component';
+import { SearchComponent } from './search/search.component';
+import { SearchBoxComponent } from './search-box/search-box.component';
 
 @NgModule({
   declarations: [
@@ -21,7 +25,11 @@ import { BenefitDetailComponent } from './benefit-detail/benefit-detail.componen
     LifestyleComponent,
     ProtectionComponent,
     BenefitListComponent,
-    BenefitDetailComponent
+    BenefitDetailComponent,
+    OrderByIdPipe,
+    PageNotFoundComponent,
+    SearchComponent,
+    SearchBoxComponent
   ],
   imports: [
 		RouterModule.forRoot(appRoutes),

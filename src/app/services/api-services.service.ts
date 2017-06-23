@@ -9,17 +9,16 @@ export class ApiServicesService {
 
   constructor(private http: Http) { }
 
-	// getNav(): Observable<any> {
-	// 	const nav = "../data/site-data.json";
-	//
-	// 	return this.http.get(nav).map(
-	// 		res => {
-	// 			const navItems = res.json();
-	// 			console.log(navItems);
-	// 			return navItems;
-	// 		}
-	// 	);
-	// }
+	getNav(): Observable<any> {
+		const nav = "../assets/data/site-data.json";
+
+		return this.http.get(nav).map(
+			res => {
+				const navItems = res.json();
+				return navItems;
+			}
+		);
+	}
 
   getBenefits(): Observable<any> {
 		const apiName = this.url + 'MasterCardBenefitData.ashx?CountryCode=ae&CardType=worldElite';

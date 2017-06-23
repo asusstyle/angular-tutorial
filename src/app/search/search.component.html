@@ -1,0 +1,15 @@
+<div class="container">
+	<h1>{{title}}</h1>
+
+	<ul class="row benefit-list" *ngIf="searchResults">
+		<li class="col-sm-6 col-md-4" *ngFor="let item of searchResults | orderById">
+			<h2>{{item.OfferHead}}</h2>
+			<p class="offer-desc" [innerHTML]="item.OfferBriefDescription"></p>
+			<a [routerLink]="['/', item.SiteSection | lowercase, 'benefit', item.ID]" class="ctc-more">{{item.LinkText}}</a>
+		</li>
+	</ul>
+
+	<div class="no-search" *ngIf="noSearch">
+		<p>No search results found, please try again:</p>
+	</div>
+</div>
